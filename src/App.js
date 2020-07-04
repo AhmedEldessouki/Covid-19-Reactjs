@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import covedImage from "./images/image.png";
 import Cards from "./components/Cards/Cards";
 import Chart from "./components/Chart/Chart";
 import CountryPicker from "./components/CountryPicker/CountryPicker";
@@ -25,6 +25,8 @@ export default class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <img className="image" src={covedImage} alt="COVID-19" />
+
           <Cards data={data} />
           <CountryPicker handleCountryChange={this.handleCountryChange} />
           <Chart data={data} country={country} />
