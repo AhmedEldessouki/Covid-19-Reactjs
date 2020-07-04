@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import "./Cards.module.scss";
+import React from "react";
+import styles from "./Cards.module.scss";
 import { Card, CardContent, Typography, Grid } from "@material-ui/core";
 import CountUp from "react-countup";
+import cx from "classnames";
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   console.log(deaths);
@@ -9,9 +10,15 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
     return "loading";
   }
   return (
-    <div className="container">
+    <div className={styles.container}>
       <Grid container spacing={3} justify="center">
-        <Grid item component={Card}>
+        <Grid
+          item
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.infected)}
+        >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Infected
@@ -20,7 +27,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               <CountUp
                 start={0}
                 end={confirmed.value}
-                duration={2.5}
+                duration={4}
                 separator=","
               />
             </Typography>
@@ -32,7 +39,13 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             </Typography>
           </CardContent>
         </Grid>
-        <Grid item component={Card}>
+        <Grid
+          item
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.recovered)}
+        >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Infected
@@ -41,7 +54,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               <CountUp
                 start={0}
                 end={recovered.value}
-                duration={2.5}
+                duration={3}
                 separator=","
               />
             </Typography>
@@ -53,7 +66,13 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             </Typography>
           </CardContent>
         </Grid>{" "}
-        <Grid item component={Card}>
+        <Grid
+          item
+          component={Card}
+          xs={12}
+          md={3}
+          className={cx(styles.card, styles.deaths)}
+        >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
               Infected
