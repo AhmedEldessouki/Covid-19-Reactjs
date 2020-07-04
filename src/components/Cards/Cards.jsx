@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./Cards.module.scss";
 import { Card, CardContent, Typography, Grid } from "@material-ui/core";
 import CountUp from "react-countup";
-import d from "d";
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   console.log(deaths);
