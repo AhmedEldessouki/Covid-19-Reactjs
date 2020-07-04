@@ -8,16 +8,19 @@ import CountryPicker from "./components/CountryPicker/CountryPicker";
 import { fetchData } from "./api";
 
 export default class App extends Component {
+  state = {
+    data: {},
+  };
   async componentDidMount() {
-    const data = await fetchData();
-
-    console.log(data);
+    const fetchedData = await fetchData();
+    this.setState({ data: fetchedData });
   }
   render() {
+    const { data } = this.state;
     return (
       <div className="App">
         <header className="App-header">
-          <Cards />
+          <Cards data={data} />
           <CountryPicker />
           <Chart />
         </header>
