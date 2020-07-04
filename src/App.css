@@ -7,13 +7,6 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    -webkit-animation: App-logo-spin infinite 20s linear;
-            animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -34,29 +27,24 @@
   color: white;
 }
 
+.App-header .image {
+  width: 350px;
+  margin-top: 25px;
+}
+
 .App-link {
   color: #61dafb;
 }
 
-@-webkit-keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+@media (max-width: 770px) {
+  .image {
+    width: 100%;
   }
 }
 
-@keyframes App-logo-spin {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+@media (max-width: 500px) {
+  .image {
+    width: 290px !important;
   }
 }
 /*# sourceMappingURL=App.css.map */
