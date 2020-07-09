@@ -12,6 +12,9 @@ export default class App extends Component {
     data: {},
     country: "",
   };
+  componentDidMount() {
+    document.title = "Covid-19";
+  }
   async componentDidMount() {
     const fetchedData = await fetchData();
     this.setState({ data: fetchedData });
@@ -24,6 +27,9 @@ export default class App extends Component {
     const { data, country } = this.state;
     return (
       <div className="App">
+        <head>
+          <title>COVID-19</title>
+        </head>
         <header className="App-header">
           <img className="image" src={covedImage} alt="COVID-19" />
 
