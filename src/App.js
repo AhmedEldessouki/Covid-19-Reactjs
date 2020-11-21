@@ -1,43 +1,35 @@
-import React, { Component } from "react";
-import "./App.css";
-import covedImage from "./images/image.png";
-import Cards from "./components/Cards/Cards";
-import Chart from "./components/Chart/Chart";
-import CountryPicker from "./components/CountryPicker/CountryPicker";
+import * as React from 'react'
+import './App.css'
+import {ReactQueryDevtools} from 'react-query-devtools'
 
-import { fetchData } from "./api";
+import covedImage from './images/image.png'
 
-export default class App extends Component {
-  state = {
-    data: {},
-    country: "",
-  };
-  componentDidMount() {
-    document.title = "Covid-19";
-  }
-  async componentDidMount() {
-    const fetchedData = await fetchData();
-    this.setState({ data: fetchedData });
-  }
-  handleCountryChange = async (country) => {
-    const fetchedData = await fetchData(country);
-    this.setState({ data: fetchedData, country: country });
-  };
-  render() {
-    const { data, country } = this.state;
-    return (
-      <div className="App">
-        <head>
-          <title>COVID-19</title>
-        </head>
-        <header className="App-header">
-          <img className="image" src={covedImage} alt="COVID-19" />
+import {useReactQuery} from './api'
+import Covid from './components/Covid'
+import {CountryContextProvider} from './context/CountryContextProvider'
+import ReactQuery from './context/ReactQuery'
 
-          <Cards data={data} />
-          <CountryPicker handleCountryChange={this.handleCountryChange} />
-          <Chart data={data} country={country} />
-        </header>
-      </div>
-    );
-  }
+function App() {
+  const {isLoading, error, data} = useReactQuery()
+
+  // if (isLoading) return "loading";
+
+  if (error) throw error.message
+
+  return (
+    <section className="App">
+      <header className="App-header">
+        <title>COVID-19</title>
+        <img className="image" src={covedImage} alt="COVID-19" />
+        <ReactQuery>
+          <CountryContextProvider>
+            <Covid data={data} />
+          </CountryContextProvider>
+        </ReactQuery>
+      </header>
+      <ReactQueryDevtools initialIsOpen />
+    </section>
+  )
 }
+
+export default App

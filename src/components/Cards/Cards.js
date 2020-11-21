@@ -1,13 +1,14 @@
-import React from "react";
-import styles from "./Cards.module.scss";
-import { Card, CardContent, Typography, Grid } from "@material-ui/core";
-import CountUp from "react-countup";
-import cx from "classnames";
+import React from 'react'
+import {Card, CardContent, Typography, Grid} from '@material-ui/core'
+import CountUp from 'react-countup'
+import cx from 'classnames'
+import styles from './Cards.module.scss'
 
-const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
-  if (!confirmed) {
-    return "loading";
-  }
+const Cards = ({data = {}}) => {
+  const {confirmed, recovered, deaths, lastUpdate} = data
+
+  if (!confirmed) return 'loading'
+
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">
@@ -64,7 +65,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               Number of Recoverd cases of Covid-19
             </Typography>
           </CardContent>
-        </Grid>{" "}
+        </Grid>
         <Grid
           item
           component={Card}
@@ -94,7 +95,9 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
         </Grid>
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default Cards;
+const CardsMemoed = React.memo(Cards)
+
+export default CardsMemoed
