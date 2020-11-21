@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "kentcdodds/es6",
+    "kentcdodds/import",
+    "kentcdodds/react",
+    "kentcdodds/jsx-a11y",
+    "kentcdodds/jest"
+  ],
+  "rules": {
+    "react/prop-types": "off"
+  }
+}
