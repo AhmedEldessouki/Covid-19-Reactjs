@@ -17,6 +17,7 @@ const Cards = ({data = {}}) => {
           component={Card}
           xs={10}
           md={3}
+          style={{background: '#ffeb3b'}}
           className={cx(styles.card, styles.infected)}
         >
           <CardContent>
@@ -44,11 +45,12 @@ const Cards = ({data = {}}) => {
           component={Card}
           xs={10}
           md={3}
+          style={{background: '#2196f3'}}
           className={cx(styles.card, styles.recovered)}
         >
           <CardContent>
             <Typography color="textSecondary" gutterBottom>
-              Recoverd
+              Recovered
             </Typography>
             <Typography variant="h5">
               <CountUp
@@ -62,7 +64,7 @@ const Cards = ({data = {}}) => {
               {new Date(lastUpdate).toDateString()}
             </Typography>
             <Typography variant="body2">
-              Number of Recoverd cases of Covid-19
+              Number of Recovered cases of Covid-19
             </Typography>
           </CardContent>
         </Grid>
@@ -71,6 +73,7 @@ const Cards = ({data = {}}) => {
           component={Card}
           xs={10}
           md={3}
+          style={{background: '#f73378'}}
           className={cx(styles.card, styles.deaths)}
         >
           <CardContent>

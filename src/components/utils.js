@@ -1,5 +1,6 @@
 import React from 'react'
 import {ErrorBoundary} from 'react-error-boundary'
+import {ReactQueryErrorResetBoundary} from 'react-query'
 
 function createResource(promise) {
   let status = 'pending'
@@ -36,10 +37,17 @@ function ErrorFallback({error, resetErrorBoundary}) {
 function CovidErrorBoundary(parentProps) {
   const canReset = Boolean(parentProps.onReset || parentProps.resetKeys)
   return (
-    <ErrorBoundary
-      fallbackRender={props => <ErrorFallback canReset={canReset} {...props} />}
-      {...parentProps}
-    />
+    <ReactQueryErrorResetBoundary>
+      {({reset}) => (
+        <ErrorBoundary
+          onReset={reset}
+          fallbackRender={props => (
+            <ErrorFallback canReset={canReset} {...props} />
+          )}
+          {...parentProps}
+        />
+      )}
+    </ReactQueryErrorResetBoundary>
   )
 }
 

@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <React.Suspense fallback={<h1>loading...</h1>}>
+      <App />
+    </React.Suspense>
   </React.StrictMode>,
   document.getElementById('root'),
 )

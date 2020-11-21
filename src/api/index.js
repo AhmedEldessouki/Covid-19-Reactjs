@@ -38,12 +38,8 @@ export const fetchCountries = async () => {
 }
 
 export function useReactQuery() {
-  const {isLoading, error, data} = useQuery(
-    'repoData',
-    () => window.fetch(url).then(res => res.json()),
-    {
-      retry: 5,
-    },
+  const {isLoading, error, data} = useQuery('repoData', () =>
+    window.fetch(url).then(res => res.json()),
   )
   if (isLoading) return 'isLoading...'
   if (error) throw error
@@ -53,12 +49,8 @@ export function useReactQuery() {
 export function useReactQueryCountry(country) {
   const fetchUrl = `${url}/countries/${country}`
 
-  const {isLoading, error, data} = useQuery(
-    [`selectedCountry`, country],
-    () => window.fetch(fetchUrl).then(res => res.json()),
-    {
-      retry: 5,
-    },
+  const {isLoading, error, data} = useQuery([`selectedCountry`, country], () =>
+    window.fetch(fetchUrl).then(res => res.json()),
   )
   if (isLoading) return 'isLoading...'
   if (error) throw error
