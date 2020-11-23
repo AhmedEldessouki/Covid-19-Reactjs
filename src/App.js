@@ -10,11 +10,11 @@ import {CountryContextProvider} from './context/CountryContextProvider'
 import ReactQuery from './context/ReactQuery'
 
 function App() {
-  const {isLoading, error, data} = useReactQuery()
+  // const {isLoading, error, data} = useReactQuery()
 
-  // if (isLoading) return "loading";
+  // if (isLoading) throw Promise
 
-  if (error) throw error.message
+  // if (error) throw error
 
   return (
     <section className="App">
@@ -22,9 +22,11 @@ function App() {
         <title>COVID-19</title>
         <img className="image" src={covedImage} alt="COVID-19" />
         <ReactQuery>
-          <CountryContextProvider>
-            <Covid data={data} />
-          </CountryContextProvider>
+          <React.Suspense fallback={<h1>loading...</h1>}>
+            <CountryContextProvider>
+              <Covid />
+            </CountryContextProvider>
+          </React.Suspense>
         </ReactQuery>
       </header>
       <ReactQueryDevtools initialIsOpen />
