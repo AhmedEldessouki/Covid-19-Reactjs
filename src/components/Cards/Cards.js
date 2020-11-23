@@ -7,8 +7,6 @@ import styles from './Cards.module.scss'
 const Cards = ({data = {}}) => {
   const {confirmed, recovered, deaths, lastUpdate} = data
 
-  if (!confirmed) throw Promise
-
   return (
     <div className={styles.container}>
       <Grid container spacing={3} justify="center">

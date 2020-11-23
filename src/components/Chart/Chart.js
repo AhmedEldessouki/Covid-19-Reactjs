@@ -1,9 +1,7 @@
 import React from 'react'
 import {Bar, Line} from 'react-chartjs-2'
-import Chart from 'chart.js'
 import {fetchDailyData} from '../../api'
 import {createResource} from '../utils'
-import styles from './Chart.module.css'
 
 const dailyDataResource = createResource(fetchDailyData())
 
