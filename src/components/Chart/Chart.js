@@ -7,6 +7,7 @@ const dailyDataResource = createResource(fetchDailyData())
 
 const ChartX = ({data = {}, country}) => {
   const dailyData = dailyDataResource.read()
+
   const dailyDataFiltered = {
     dateArr: [],
     confirmedArr: [],
@@ -49,16 +50,23 @@ const ChartX = ({data = {}, country}) => {
   return (
     <Line
       data={{
-        labels: dailyDataFiltered.dateArr,
+        labels:
+          data.date === 'XX-XX-XXXX' ? data.date : dailyDataFiltered.dateArr,
         datasets: [
           {
-            data: dailyDataFiltered.confirmedArr,
+            data:
+              data.date === 'XX-XX-XXXX'
+                ? data.confirmed
+                : dailyDataFiltered.confirmedArr,
             label: 'Infected',
             borderColor: '#3333ff',
             fill: true,
           },
           {
-            data: dailyDataFiltered.deathsArr,
+            data:
+              data.date === 'XX-XX-XXXX'
+                ? data.deaths
+                : dailyDataFiltered.deathsArr,
             label: 'Deaths',
             borderColor: 'rgba(255,0,0,0.5)',
             fill: true,

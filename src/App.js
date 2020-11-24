@@ -7,6 +7,8 @@ import covedImage from './images/image.png'
 import Covid from './components/Covid'
 import {CountryContextProvider} from './context/CountryContextProvider'
 import ReactQuery from './context/ReactQuery'
+import CardsMemoed from './components/Cards/Cards'
+import {fakeCountryData} from './components/utils'
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
         <title>COVID-19</title>
         <img className="image" src={covedImage} alt="COVID-19" />
         <ReactQuery>
-          <React.Suspense fallback={<h1>loading...</h1>}>
+          <React.Suspense fallback={<CardsMemoed data={fakeCountryData} />}>
             <CountryContextProvider>
               <Covid />
             </CountryContextProvider>

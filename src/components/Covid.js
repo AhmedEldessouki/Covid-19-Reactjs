@@ -6,7 +6,7 @@ import {useReactQuery} from '../api'
 import ChartMemoed from './Chart/Chart'
 import CountryPicker from './CountryPicker/CountryPicker'
 import CardsMemoed from './Cards/Cards'
-import {CovidErrorBoundary, fakeData} from './utils'
+import {CovidErrorBoundary, fakeCountryData, fakeDailyData} from './utils'
 
 function Covid() {
   const {pickCountry} = useCountry()
@@ -30,7 +30,6 @@ function Covid() {
     setData(country !== '' ? countryData : parentData)
   }, [country, countryData, parentData])
 
-  // if (status === 'loading') return status
   if (status === 'loading') throw Promise
 
   if (error) throw error
@@ -38,7 +37,7 @@ function Covid() {
   return (
     <>
       <CovidErrorBoundary>
-        <React.Suspense fallback={<CardsMemoed data={fakeData} />}>
+        <React.Suspense fallback={<CardsMemoed data={fakeCountryData} />}>
           <CardsMemoed data={data} />
         </React.Suspense>
       </CovidErrorBoundary>
@@ -47,7 +46,7 @@ function Covid() {
         country={country}
       />
       <CovidErrorBoundary>
-        <React.Suspense fallback={<div>loading...</div>}>
+        <React.Suspense fallback={<ChartMemoed data={fakeDailyData} />}>
           <ChartMemoed data={data} country={country} />
         </React.Suspense>
       </CovidErrorBoundary>

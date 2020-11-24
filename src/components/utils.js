@@ -51,10 +51,17 @@ function CovidErrorBoundary(parentProps) {
   )
 }
 
-const fakeData = {
-  confirmed: {value: 11111},
-  recovered: {value: 11111},
-  deaths: {value: 11111},
+const fakeCountryData = {
+  confirmed: {value: 0},
+  recovered: {value: 0},
+  deaths: {value: 0},
+  lastUpdate: '11-11-1111',
 }
 
-export {CovidErrorBoundary, createResource, fakeData}
+const fakeDailyData = {
+  confirmed: [9999, 9999, 9999, 9999, 9999],
+  deaths: [9999, 9999, 9999, 9999, 9999],
+  date: ['XX-XX-XXXX', 'XX-XX-XXXX', 'XX-XX-XXXX', 'XX-XX-XXXX', 'XX-XX-XXXX'],
+}
+
+export {CovidErrorBoundary, createResource, fakeDailyData, fakeCountryData}
